@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
-  },
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "webpack --config webpack.config.cjs"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mubarak77-C/Project-Todo-List.git"
@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Mubarak77-C/Project-Todo-List/issues"
   },
