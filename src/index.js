@@ -1,4 +1,5 @@
 // src/index.js
+import './style.css'; // <--- Import CSS here
 import StorageManager from './storage.js';
 import DomController from './dom.js';
 

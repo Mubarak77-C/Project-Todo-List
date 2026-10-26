@@ -22,6 +22,57 @@
         </main>
     </div>
 
+    <!-- Custom Modal Form for Adding Todo -->
+    <dialog id="todo-modal">
+        <form id="todo-form" method="dialog">
+            <h3>Add New Todo</h3>
+            
+            <label for="todo-title">Title:</label>
+            <input type="text" id="todo-title" required placeholder="Task title...">
+
+            <label for="todo-desc">Description:</label>
+            <textarea id="todo-desc" placeholder="Details..."></textarea>
+
+            <label for="todo-date">Due Date:</label>
+            <input type="date" id="todo-date" required>
+
+            <label for="todo-priority">Priority:</label>
+            <select id="todo-priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label for="todo-notes">Notes:</label>
+            <textarea id="todo-notes" placeholder="Extra notes..."></textarea>
+
+            <div class="modal-actions">
+                <button type="button" id="cancel-btn">Cancel</button>
+                <button type="submit" id="submit-todo-btn">Save Todo</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Custom Modal Form for Adding Todo -->
+    <dialog id="todo-modal">
+        <!-- ... existing todo form ... -->
+    </dialog>
+
+    <!-- Custom Modal Form for Adding Project -->
+    <dialog id="project-modal">
+        <form id="project-form" method="dialog">
+            <h3>Add New Project</h3>
+            
+            <label for="project-name">Project Name:</label>
+            <input type="text" id="project-name" required placeholder="e.g., Fitness, Work...">
+
+            <div class="modal-actions">
+                <button type="button" id="cancel-project-btn">Cancel</button>
+                <button type="submit" id="submit-project-btn">Save Project</button>
+            </div>
+        </form>
+    </dialog>
+
     <script src="./main.js"></script>
 </body>
 </html>

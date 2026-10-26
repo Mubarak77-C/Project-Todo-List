@@ -5,34 +5,72 @@ export default function DomController(app) {
     const projectTitle = document.getElementById('current-project-title');
     const addProjectBtn = document.getElementById('add-project-btn');
     const addTodoBtn = document.getElementById('add-todo-btn');
+    
+    // Todo Modal elements
+    const modal = document.getElementById('todo-modal');
+    const todoForm = document.getElementById('todo-form');
+    const cancelBtn = document.getElementById('cancel-btn');
+
+    // Project Modal elements
+    const projectModal = document.getElementById('project-modal');
+    const projectForm = document.getElementById('project-form');
+    const cancelProjectBtn = document.getElementById('cancel-project-btn');
 
     let activeProjectIndex = 0;
 
-    // Event Listener for Adding a Project
+    // Open Project Modal
     addProjectBtn.addEventListener('click', () => {
-        const projectName = prompt("Enter new project name:");
+        projectForm.reset();
+        projectModal.showModal();
+    });
+
+    // Close Project Modal on Cancel
+    cancelProjectBtn.addEventListener('click', () => {
+        projectModal.close();
+    });
+
+    // Handle Project Form Submit
+    projectForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const projectName = document.getElementById('project-name').value;
         if (projectName && projectName.trim() !== "") {
             app.addProject(projectName.trim());
+            projectModal.close();
+            // Automatically switch to the newly created project
+            activeProjectIndex = app.getProjects().length - 1;
             render();
         }
     });
 
-    // Event Listener for Adding a Todo
+    // Open Todo Modal
     addTodoBtn.addEventListener('click', () => {
+        const projects = app.getProjects();
+        if (!projects[activeProjectIndex]) return;
+        todoForm.reset();
+        modal.showModal();
+    });
+
+    // Close Todo Modal on Cancel
+    cancelBtn.addEventListener('click', () => {
+        modal.close();
+    });
+
+    // Handle Todo Form Submit
+    todoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         const projects = app.getProjects();
         const currentProject = projects[activeProjectIndex];
         if (!currentProject) return;
 
-        const title = prompt("Enter todo title:");
-        if (!title || title.trim() === "") return;
-
-        const description = prompt("Enter description:") || "";
-        const dueDate = prompt("Enter due date (e.g., 2026-06-01):") || "No date";
-        const priority = prompt("Enter priority (Low, Medium, High):") || "Normal";
-        const notes = prompt("Enter any extra notes:") || "";
+        const title = document.getElementById('todo-title').value;
+        const description = document.getElementById('todo-desc').value;
+        const dueDate = document.getElementById('todo-date').value;
+        const priority = document.getElementById('todo-priority').value;
+        const notes = document.getElementById('todo-notes').value;
 
         currentProject.addTodo(title, description, dueDate, priority, notes);
         app.saveStorage();
+        modal.close();
         render();
     });
 
@@ -90,14 +128,12 @@ export default function DomController(app) {
                 </div>
             `;
 
-            // Toggle completed event listener
             card.querySelector('.toggle-btn').addEventListener('click', () => {
                 todo.toggleCompleted();
                 app.saveStorage();
                 render();
             });
 
-            // Delete todo event listener
             card.querySelector('.delete-todo-btn').addEventListener('click', () => {
                 currentProject.removeTodo(todoIndex);
                 app.saveStorage();
