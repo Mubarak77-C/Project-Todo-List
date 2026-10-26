@@ -2,11 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Todo List</title>
 </head>
 <body>
-    <h1>Todo List App</h1>
-    <!-- Webpack will automatically inject our bundled script here later -->
+    <div id="app">
+        <!-- Sidebar for Projects -->
+        <aside id="sidebar">
+            <h2>Projects</h2>
+            <div id="projects-container"></div>
+            <button id="add-project-btn">+ Add Project</button>
+        </aside>
+
+        <!-- Main Content for Todos -->
+        <main id="main-content">
+            <h1 id="current-project-title">Select a Project</h1>
+            <div id="todos-container"></div>
+            <button id="add-todo-btn">+ Add Todo</button>
+        </main>
+    </div>
+
     <script src="./main.js"></script>
 </body>
 </html>
