@@ -1,4 +1,4 @@
-import createTodo from './todo';
+import createTodo from './todo.js';
 
 export default function createProject(name) {
     let todos = [];

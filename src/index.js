@@ -1,10 +1,16 @@
-import createTodo from './todo.js';
+// src/index.js
+import StorageManager from './storage.js';
 
-// Test our factory function in the console
-const testTodo = createTodo("Buy Milk", "Get whole milk from the store", "2026-06-01", "High", "Check expiration date");
+// Initialize our storage/app manager
+const app = StorageManager();
 
-console.log("Todo Title:", testTodo.title);
-console.log("Completed Status:", testTodo.completed);
+console.log("Initial Projects:", app.getProjects());
 
-testTodo.toggleCompleted();
-console.log("Completed Status After Toggle:", testTodo.completed);
+// Get the default project and add a test todo
+const defaultProject = app.getProjects()[0];
+defaultProject.addTodo("Learn Webpack", "Understand how modules bundle", "2026-06-05", "High", "Keep practicing");
+
+// Save changes to localStorage
+app.saveStorage();
+
+console.log("Updated Default Project Todos:", defaultProject.getTodos());
