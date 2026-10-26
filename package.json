@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Mubarak77-C/Project-Todo-List/issues"
   },
-  "homepage": "https://github.com/Mubarak77-C/Project-Todo-List#readme"
+  "homepage": "https://github.com/Mubarak77-C/Project-Todo-List#readme",
+  "devDependencies": {
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.2.3"
+  }
 }
