@@ -1,4 +1,3 @@
-// src/project.js
 import createTodo from './todo';
 
 export default function createProject(name) {
