@@ -1,16 +1,13 @@
 // src/index.js
 import StorageManager from './storage.js';
+import DomController from './dom.js';
 
-// Initialize our storage/app manager
+// Initialize App Storage and DOM Controller
 const app = StorageManager();
+const ui = DomController(app);
 
-console.log("Initial Projects:", app.getProjects());
+// Initial render on page load
+ui.render();
 
-// Get the default project and add a test todo
-const defaultProject = app.getProjects()[0];
-defaultProject.addTodo("Learn Webpack", "Understand how modules bundle", "2026-06-05", "High", "Keep practicing");
-
-// Save changes to localStorage
-app.saveStorage();
-
-console.log("Updated Default Project Todos:", defaultProject.getTodos());
+// For quick testing in console if needed
+window.app = app;
